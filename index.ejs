@@ -1,0 +1,26 @@
+<%- include('../partials/header', { title: 'All Products' }) %>
+    <div class="products-header">
+        <h1>All Products</h1>
+        <% if (isAuthenticated && user.isAdmin) { %>
+            <a href="/products/create" class="btn">Add New Product</a>
+        <% } %>
+    </div>
+
+    <div class="products-grid">
+        <% products.forEach(product => { %>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="<%= product.image %>" alt="<%= product.name %>">
+                </div>
+                <div class="product-info">
+                    <h3><%= product.name %></h3>
+                    <p class="product-price">$<%= product.price.toFixed(2) %></p>
+                    <div class="product-actions">
+                        <a href="/products/<%= product._id %>" class="btn btn-outline">View Details</a>
+                        <button class="btn add-to-cart" data-id="<%= product._id %>">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        <% }) %>
+    </div>
+<%- include('../partials/footer') %>

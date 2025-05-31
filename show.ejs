@@ -1,0 +1,26 @@
+<%- include('../partials/header', { title: product.name }) %>
+    <div class="product-detail">
+        <div class="product-detail-image">
+            <img src="<%= product.image %>" alt="<%= product.name %>">
+        </div>
+        <div class="product-detail-info">
+            <h1><%= product.name %></h1>
+            <p class="product-detail-price">$<%= product.price.toFixed(2) %></p>
+            <div class="product-detail-description">
+                <p><%= product.description %></p>
+            </div>
+            <div class="product-actions">
+                <div class="quantity-selector">
+                    <button class="quantity-btn minus">-</button>
+                    <input type="number" class="quantity-input" value="1" min="1">
+                    <button class="quantity-btn plus">+</button>
+                </div>
+                <button class="btn add-to-cart" data-id="<%= product._id %>">Add to Cart</button>
+            </div>
+            <div class="product-meta">
+                <p><strong>Category:</strong> <%= product.category %></p>
+                <p><strong>Availability:</strong> <%= product.stock > 0 ? 'In Stock' : 'Out of Stock' %></p>
+            </div>
+        </div>
+    </div>
+<%- include('../partials/footer') %>
